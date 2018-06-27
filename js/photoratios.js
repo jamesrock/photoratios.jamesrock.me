@@ -49,10 +49,8 @@
 	};
 	Ratio.prototype.setVariant = function(variant) {
 
-		var out = new Variant(this, variant);
-
-		this.variants.push(out);
-		return out;
+		this.variants.push(variant);
+		return this;
 
 	};
 
@@ -123,8 +121,9 @@
 	root = document.getElementById('app'),
 	ppu = 30,
 	skipNoPrinters = true,
-	ratios = {},
+	ratios = window.ratios = {},
 	printers = {},
+	variants = window.variants = {},
 	tests = [
 		'three_two',
 		'seven_five',
@@ -146,6 +145,18 @@
 
 		printers[id] = new Printer(name, url);
 		return printers[id];
+
+	},
+	makeVariant = function(id, ratio, variant) {
+
+		variants[id] = new Variant(ratios[ratio], variant);
+		ratios[ratio].setVariant(variants[id]);
+		return variants[id];
+
+	},
+	setPrinter = function(variant, printer) {
+
+		variants[variant].printers.push(printers[printer]);
 
 	},
 	render = function() {
@@ -239,7 +250,25 @@
 	makePrinter('sevenbyfiveprints', 'sevenbyfiveprints', 'http://sevenbyfiveprints.com');
 	makePrinter('eightbysixprints', 'eightbysixprints', 'http://eightbysixprints.com');
 
-	ratios.three_two.setVariant(2).setPrinter('jessops').setPrinter('photobox').setPrinter('truprint').setPrinter('boots').setPrinter('snapfish').setPrinter('tesco').setPrinter('asda');
+	makeVariant('sixbyfour', 'three_two', 2);
+	makeVariant('ninebysix', 'three_two', 3);
+	makeVariant('twelevebyeight', 'three_two', 4);
+	makeVariant('eighteenbytweleve', 'three_two', 5);
+	makeVariant('thirtybytwenty', 'three_two', 6);
+	makeVariant('thirtysixbytwentyfour', 'three_two', 6);
+
+	setPrinter('sixbyfour', 'jessops');
+	setPrinter('sixbyfour', 'photobox');
+	setPrinter('sixbyfour', 'truprint');
+	setPrinter('sixbyfour', 'boots');
+	setPrinter('sixbyfour', 'snapfish');
+	setPrinter('sixbyfour', 'tesco');
+	setPrinter('sixbyfour', 'asda');
+
+	makeVariant('sevenbyfive', 'seven_five', 1);
+
+	makeVariant('eightbysix', 'four_three', 2);
+
 	ratios.three_two.setVariant(3).setPrinter('jessops').setPrinter('asda');
 	ratios.three_two.setVariant(4).setPrinter('jessops').setPrinter('truprint').setPrinter('boots').setPrinter('tesco').setPrinter('asda');
 	ratios.three_two.setVariant(5);
