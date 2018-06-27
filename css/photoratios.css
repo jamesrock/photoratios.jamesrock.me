@@ -1,0 +1,59 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: sans-serif;
+	padding: 20px;
+	font-size: 22px;
+	line-height: 1.2;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.name {
+	display: none;
+}
+
+.sizes {
+	padding-top: 10px;
+}
+
+.size {
+
+}
+
+.example {
+	background-color: red;
+	border: solid 4px black;
+	margin: 0 auto;
+	font-size: 70px;
+	position: relative;
+}
+
+.example span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.printer {
+	color: cadetblue;
+	font-size: 18px;
+}
+
+.group {
+	position: relative;
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 20px 0;
+}
