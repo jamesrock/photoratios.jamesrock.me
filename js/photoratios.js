@@ -60,25 +60,15 @@
 
 		this.ratio = ratio;
 		this.variant = variant;
+		this.short = (this.ratio.short*this.variant);
+		this.long = this.ratio.getLongSide(this.short);
 		this.printers = [];
 
 	};
-	Variant.prototype.getLongSide = function() {
+	Variant.prototype.getSize = function() {
 
 		var
-		short = (this.ratio.short*this.variant),
-		long = this.ratio.getLongSide(short),
-		landscape = [long, short].join('x');
-
-		return landscape;
-
-	};
-	Variant.prototype.getShortSide = function() {
-
-		var
-		long = (this.ratio.long*this.variant),
-		short = this.ratio.getShortSide(long),
-		landscape = [long, short].join('x');
+		landscape = [this.long, this.short].join('x');
 
 		return landscape;
 
@@ -186,8 +176,8 @@
 					return;
 				};
 
-				items += ROCK.STRING.replacer('<div class="size">{answer} ({printers} printers)</div>', {
-					answer: variant.getLongSide(),
+				items += ROCK.STRING.replacer('<div class="size">{size} ({printers} printers)</div>', {
+					size: variant.getSize(),
 					printers: printers
 				});
 
@@ -219,7 +209,6 @@
 			ratio.variants.forEach(function(variant) {
 
 				console.log(variant.getLongSide());
-				// console.log(variant.getShortSide());
 
 			});
 
