@@ -71,6 +71,11 @@
 		return landscape;
 
 	};
+	Variant.prototype.getName = function() {
+
+		return this.getSize();
+
+	};
 	Variant.prototype.setPrinter = function(id) {
 
 		this.printers.push(printers[id]);
@@ -122,7 +127,7 @@
 	ppu = 30,
 	skipNoPrinters = true,
 	ratios = window.ratios = {},
-	printers = {},
+	printers = window.printers = {},
 	variants = window.variants = {},
 	tests = [
 		'three_two',
@@ -134,6 +139,31 @@
 		// 'five_three',
 		// 'two_one',
 		'square'
+	],
+	numbers = [
+		'',
+		'one',
+		'two',
+		'three',
+		'four',
+		'five',
+		'six',
+		'seven',
+		'eight',
+		'nine',
+		'ten',
+		'eleven',
+		'twelve',
+		'thirteen',
+		'fourteen',
+		'fifteen',
+		'sixteen',
+		'seventeen',
+		'eightteen',
+		'nineteen',
+		'twenty',
+		'twentyone',
+		'twentytwo'
 	],
 	makeRatio = function(id, long, short, example) {
 
@@ -227,17 +257,19 @@
 
 		});
 
-	};
+	},
+	getNames = function() {
 
-	makeRatio('three_two', 3, 2, 0);
-	makeRatio('seven_five', 7, 5, 0);
-	makeRatio('four_three', 4, 3, 0);
-	makeRatio('five_three', 5, 3, 0);
-	makeRatio('five_four', 5, 4, 0);
-	makeRatio('two_one', 2, 1, 0);
-	makeRatio('six_five', 6, 5, 0);
-	makeRatio('square', 1, 1, 1);
-	makeRatio('sixteen_nine', 16, 9, 0);
+		Object.entries(variants).forEach(function([key, item]) {
+
+			var
+			name = item.getName();
+
+			console.log([name, key].join(' > '));
+
+		});
+
+	};
 
 	makePrinter('jessops', 'jessops', 'https://photo.jessops.com');
 	makePrinter('snapfish', 'snapfish', 'https://snapfish.com');
@@ -250,78 +282,135 @@
 	makePrinter('sevenbyfiveprints', 'sevenbyfiveprints', 'http://sevenbyfiveprints.com');
 	makePrinter('eightbysixprints', 'eightbysixprints', 'http://eightbysixprints.com');
 
-	makeVariant('sixbyfour', 'three_two', 2);
-	makeVariant('ninebysix', 'three_two', 3);
-	makeVariant('twelevebyeight', 'three_two', 4);
-	makeVariant('eighteenbytweleve', 'three_two', 5);
-	makeVariant('thirtybytwenty', 'three_two', 6);
-	makeVariant('thirtysixbytwentyfour', 'three_two', 6);
+	makeRatio('three_two', 3, 2, 0);
+	makeVariant('6x4', 'three_two', 2);
+	setPrinter('6x4', 'jessops');
+	setPrinter('6x4', 'photobox');
+	setPrinter('6x4', 'truprint');
+	setPrinter('6x4', 'boots');
+	setPrinter('6x4', 'snapfish');
+	setPrinter('6x4', 'tesco');
+	setPrinter('6x4', 'asda');
+	makeVariant('9x6', 'three_two', 3);
+	setPrinter('9x6', 'jessops');
+	setPrinter('9x6', 'asda');
+	makeVariant('12x8', 'three_two', 4);
+	setPrinter('12x8', 'jessops');
+	setPrinter('12x8', 'truprint');
+	setPrinter('12x8', 'boots');
+	setPrinter('12x8', 'tesco');
+	setPrinter('12x8', 'asda');
+	makeVariant('15x10', 'three_two', 5);
+	makeVariant('18x12', 'three_two', 6);
+	setPrinter('18x12', 'asda');
+	makeVariant('30x20', 'three_two', 10);
+	setPrinter('30x20', 'asda');
+	makeVariant('36x24', 'three_two', 12);
+	setPrinter('36x24', 'asda');
 
-	setPrinter('sixbyfour', 'jessops');
-	setPrinter('sixbyfour', 'photobox');
-	setPrinter('sixbyfour', 'truprint');
-	setPrinter('sixbyfour', 'boots');
-	setPrinter('sixbyfour', 'snapfish');
-	setPrinter('sixbyfour', 'tesco');
-	setPrinter('sixbyfour', 'asda');
+	makeRatio('seven_five', 7, 5, 0);
+	makeVariant('7x5', 'seven_five', 1);
+	setPrinter('7x5', 'jessops');
+	setPrinter('7x5', 'photobox');
+	setPrinter('7x5', 'truprint');
+	setPrinter('7x5', 'tesco');
+	setPrinter('7x5', 'boots');
+	setPrinter('7x5', 'snapfish');
+	setPrinter('7x5', 'asda');
+	makeVariant('14x10', 'seven_five', 2);
+	makeVariant('21x15', 'seven_five', 3);
+	makeVariant('28x20', 'seven_five', 4);
 
-	makeVariant('sevenbyfive', 'seven_five', 1);
+	makeRatio('four_three', 4, 3, 0);
+	makeVariant('8x6', 'four_three', 2);
+	setPrinter('8x6', 'jessops');
+	setPrinter('8x6', 'photobox');
+	setPrinter('8x6', 'snapfish');
+	setPrinter('8x6', 'truprint');
+	setPrinter('8x6', 'boots');
+	setPrinter('8x6', 'tesco');
+	setPrinter('8x6', 'asda');
+	makeVariant('12x9', 'four_three', 3);
+	makeVariant('16x12', 'four_three', 4);
+	setPrinter('16x12', 'asda');
+	makeVariant('20x15', 'four_three', 5);
 
-	makeVariant('eightbysix', 'four_three', 2);
+	makeRatio('five_four', 5, 4, 0);
+	makeVariant('10x8', 'five_four', 2);
+	setPrinter('10x8', 'jessops');
+	setPrinter('10x8', 'photobox');
+	setPrinter('10x8', 'truprint');
+	setPrinter('10x8', 'snapfish');
+	setPrinter('10x8', 'boots');
+	setPrinter('10x8', 'tesco');
+	setPrinter('10x8', 'asda');
+	makeVariant('15x12', 'five_four', 3);
+	makeVariant('20x16', 'five_four', 4);
+	setPrinter('20x16', 'asda');
+	makeVariant('25x20', 'five_four', 5);
 
-	ratios.three_two.setVariant(3).setPrinter('jessops').setPrinter('asda');
-	ratios.three_two.setVariant(4).setPrinter('jessops').setPrinter('truprint').setPrinter('boots').setPrinter('tesco').setPrinter('asda');
-	ratios.three_two.setVariant(5);
-	ratios.three_two.setVariant(6).setPrinter('asda');
-	ratios.three_two.setVariant(10).setPrinter('asda');
-	ratios.three_two.setVariant(12).setPrinter('asda');
+	makeRatio('five_three', 5, 3, 0);
+	makeVariant('5x3', 'five_three', 1);
+	makeVariant('10x6', 'five_three', 2);
+	makeVariant('15x9', 'five_three', 3);
+	makeVariant('20x12', 'five_three', 4);
 
-	ratios.seven_five.setVariant(1).setPrinter('jessops').setPrinter('photobox').setPrinter('truprint').setPrinter('tesco').setPrinter('boots').setPrinter('snapfish').setPrinter('asda');
-	ratios.seven_five.setVariant(2);
-	ratios.seven_five.setVariant(3);
-	ratios.seven_five.setVariant(4);
+	makeRatio('two_one', 2, 1, 0);
+	makeVariant('2x1', 'two_one', 1);
+	makeVariant('4x2', 'two_one', 2);
+	makeVariant('6x3', 'two_one', 3);
+	makeVariant('8x4', 'two_one', 4);
 
-	ratios.four_three.setVariant(2).setPrinter('jessops').setPrinter('photobox').setPrinter('snapfish').setPrinter('truprint').setPrinter('boots').setPrinter('tesco').setPrinter('asda');
-	ratios.four_three.setVariant(3);
-	ratios.four_three.setVariant(4).setPrinter('asda');
-	ratios.four_three.setVariant(5);
+	makeRatio('six_five', 6, 5, 0);
+	makeVariant('12x10', 'six_five', 2);
+	setPrinter('12x10', 'asda');
 
-	ratios.five_four.setVariant(2).setPrinter('jessops').setPrinter('photobox').setPrinter('truprint').setPrinter('snapfish').setPrinter('boots').setPrinter('tesco').setPrinter('asda');
-	ratios.five_four.setVariant(3);
-	ratios.five_four.setVariant(4).setPrinter('asda');
-	ratios.five_four.setVariant(5);
+	makeRatio('square', 1, 1, 1);
+	makeVariant('4x4', 'square', 4);
+	setPrinter('4x4', 'snapfish');
+	setPrinter('4x4', 'boots');
+	setPrinter('4x4', 'truprint');
+	setPrinter('4x4', 'asda');
+	makeVariant('5x5', 'square', 5);
+	setPrinter('5x5', 'photobox');
+	setPrinter('5x5', 'snapfish');
+	setPrinter('5x5', 'boots');
+	setPrinter('5x5', 'truprint');
+	setPrinter('5x5', 'asda');
+	makeVariant('6x6', 'square', 6);
+	setPrinter('6x6', 'asda');
+	makeVariant('8x8', 'square', 8);
+	setPrinter('8x8', 'photobox');
+	setPrinter('8x8', 'snapfish');
+	setPrinter('8x8', 'boots');
+	setPrinter('8x8', 'truprint');
+	setPrinter('8x8', 'asda');
+	makeVariant('10x10', 'square', 10);
+	setPrinter('10x10', 'asda');
+	makeVariant('12x12', 'square', 12);
+	setPrinter('12x12', 'asda');
+	makeVariant('16x16', 'square', 16);
+	setPrinter('16x16', 'jessops');
+	setPrinter('16x16', 'asda');
+	makeVariant('20x20', 'square', 20);
+	setPrinter('20x20', 'asda');
+	makeVariant('24x24', 'square', 24);
+	setPrinter('24x24', 'jessops');
+	makeVariant('32x32', 'square', 32);
+	setPrinter('32x32', 'jessops');
 
-	ratios.five_three.setVariant(1);
-	ratios.five_three.setVariant(2);
-	ratios.five_three.setVariant(3);
-	ratios.five_three.setVariant(4);
-
-	ratios.two_one.setVariant(1);
-	ratios.two_one.setVariant(2);
-	ratios.two_one.setVariant(3);
-	ratios.two_one.setVariant(4);
-
-	ratios.six_five.setVariant(2).setPrinter('asda');
-
-	ratios.square.setVariant(4).setPrinter('snapfish').setPrinter('boots').setPrinter('truprint').setPrinter('asda');
-	ratios.square.setVariant(5).setPrinter('photobox').setPrinter('snapfish').setPrinter('boots').setPrinter('truprint').setPrinter('asda');
-	ratios.square.setVariant(6).setPrinter('asda');
-	ratios.square.setVariant(8).setPrinter('photobox').setPrinter('snapfish').setPrinter('boots').setPrinter('truprint').setPrinter('asda');
-	ratios.square.setVariant(10).setPrinter('asda');
-	ratios.square.setVariant(12).setPrinter('asda');
-	ratios.square.setVariant(16).setPrinter('jessops').setPrinter('asda');
-	ratios.square.setVariant(20).setPrinter('asda');
-	ratios.square.setVariant(24).setPrinter('jessops');
-	ratios.square.setVariant(32).setPrinter('jessops');
-
-	ratios.sixteen_nine.setVariant(1);
-	ratios.sixteen_nine.setVariant(2);
-	ratios.sixteen_nine.setVariant(3);
-	ratios.sixteen_nine.setVariant(4);
+	makeRatio('sixteen_nine', 16, 9, 0);
+	makeVariant('16x9', 'sixteen_nine', 1);
+	makeVariant('32x18', 'sixteen_nine', 2);
+	makeVariant('48x27', 'sixteen_nine', 3);
+	makeVariant('64x36', 'sixteen_nine', 4);
 
 	// test();
 	render();
+	getNames();
 
-	// console.log(ratios);
+	console.log(printers);
+	console.log(ratios);
+	console.log(variants);
 
 })();
