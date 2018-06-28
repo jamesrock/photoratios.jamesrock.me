@@ -1,15 +1,5 @@
 (function() {
 
-	/*
-
-	21/1.4 is is 15 on any other calculator
-	15.000000000000002
-
-	tests: [2, 2.5, 3, 3.5, 4]
-	halves also work for three_two, which some printers offer
-
-	*/
-
 	function Ratio(long, short, example) {
 
 		this.long = long;
@@ -37,12 +27,12 @@
 		return (long/this.multiplier);
 
 	};
-	Ratio.prototype.getExampleWidth = function() {
+	Ratio.prototype.getExampleWidth = function(ppu) {
 
 		return (ppu*(this.long*this.variants[this.example].variant));
 
 	};
-	Ratio.prototype.getExampleHeight = function() {
+	Ratio.prototype.getExampleHeight = function(ppu) {
 
 		return (ppu*(this.short*this.variants[this.example].variant));
 
@@ -123,48 +113,9 @@
 	};
 
 	var
-	root = document.getElementById('app'),
-	ppu = 30,
-	skipNoPrinters = true,
 	ratios = window.ratios = {},
 	printers = window.printers = {},
 	variants = window.variants = {},
-	tests = [
-		'three_two',
-		'seven_five',
-		'four_three',
-		'five_four',
-		'six_five',
-		// 'sixteen_nine',
-		// 'five_three',
-		// 'two_one',
-		'square'
-	],
-	numbers = [
-		'',
-		'one',
-		'two',
-		'three',
-		'four',
-		'five',
-		'six',
-		'seven',
-		'eight',
-		'nine',
-		'ten',
-		'eleven',
-		'twelve',
-		'thirteen',
-		'fourteen',
-		'fifteen',
-		'sixteen',
-		'seventeen',
-		'eightteen',
-		'nineteen',
-		'twenty',
-		'twentyone',
-		'twentytwo'
-	],
 	makeRatio = function(id, long, short, example) {
 
 		ratios[id] = new Ratio(long, short, example);
@@ -187,87 +138,6 @@
 	setPrinter = function(variant, printer) {
 
 		variants[variant].printers.push(printers[printer]);
-
-	},
-	render = function() {
-
-		var
-		out = '';
-
-		tests.forEach(function(test) {
-
-			var
-			ratio = ratios[test],
-			name = ratio.getName(),
-			template = '\
-			<div class="group">\
-				<div class="example" style="{style}"><span>{name}</span></div>\
-				<h2 class="name">{name}</h2>\
-				<div class="sizes">{items}</div>\
-			</div>',
-			items = '',
-			style = 'width: ' + ratio.getExampleWidth() + 'px; height: ' + ratio.getExampleHeight() + 'px';
-
-			ratio.variants.forEach(function(variant) {
-
-				var
-				printers = variant.getPrintersCount();
-
-				if(skipNoPrinters&&printers===0) {
-					return;
-				};
-
-				items += ROCK.STRING.replacer('<div class="size">{size} ({printers} printers)</div>', {
-					size: variant.getSize(),
-					printers: printers
-				});
-
-			});
-
-			template = ROCK.STRING.replacer(template, {
-				name: name,
-				items: items,
-				style: style
-			});
-
-			out += template;
-
-		});
-
-		root.innerHTML = out;
-
-	},
-	test = function() {
-
-		tests.forEach(function(test) {
-
-			var
-			ratio = ratios[test],
-			name = ratio.getName();
-
-			console.group(name);
-
-			ratio.variants.forEach(function(variant) {
-
-				console.log(variant.getLongSide());
-
-			});
-
-			console.groupEnd(name);
-
-		});
-
-	},
-	getNames = function() {
-
-		Object.entries(variants).forEach(function([key, item]) {
-
-			var
-			name = item.getName();
-
-			console.log([name, key].join(' > '));
-
-		});
 
 	};
 
@@ -404,10 +274,6 @@
 	makeVariant('32x18', 'sixteen_nine', 2);
 	makeVariant('48x27', 'sixteen_nine', 3);
 	makeVariant('64x36', 'sixteen_nine', 4);
-
-	// test();
-	render();
-	getNames();
 
 	console.log(printers);
 	console.log(ratios);
