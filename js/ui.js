@@ -5,15 +5,15 @@
 	ppu = 30,
 	skipNoPrinters = true,
 	tests = [
-		'three_two',
-		'seven_five',
-		'four_three',
-		'five_four',
-		'six_five',
-		// 'sixteen_nine',
-		// 'five_three',
-		// 'two_one',
-		'square'
+		'3:2',
+		'7:5',
+		'4:3',
+		'5:4',
+		'6:5',
+		// '16:9',
+		// '5:3',
+		// '2:1',
+		'1:1'
 	],
 	render = function() {
 
