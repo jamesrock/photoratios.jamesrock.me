@@ -66,12 +66,6 @@
 		return this.getSize();
 
 	};
-	Variant.prototype.setPrinter = function(id) {
-
-		this.printers.push(printers[id]);
-		return this;
-
-	};
 	Variant.prototype.getPrinters = function() {
 
 		var
@@ -94,11 +88,19 @@
 		return this.printers.length;
 
 	};
+	Variant.prototype.setPrinter = function(printer) {
+
+		this.printers.push(printer);
+		printer.setVariant(this);
+		return this;
+
+	};
 
 	function Printer(name, url) {
 
 		this.name = name;
 		this.url = url;
+		this.variants = [];
 
 	};
 	Printer.prototype.getLink = function() {
@@ -109,6 +111,12 @@
 	Printer.prototype.getName = function() {
 
 		return this.name;
+
+	};
+	Printer.prototype.setVariant = function(variant) {
+
+		this.variants.push(variant);
+		return this;
 
 	};
 
@@ -137,7 +145,8 @@
 	},
 	setPrinter = function(variant, printer) {
 
-		variants[variant].printers.push(printers[printer]);
+		variants[variant].setPrinter(printers[printer]);
+		return variants[variant];
 
 	};
 
@@ -171,10 +180,13 @@
 	setPrinter('12x8', 'tesco');
 	setPrinter('12x8', 'asda');
 	makeVariant('15x10', 'three_two', 5);
+	setPrinter('15x10', 'boots');
 	makeVariant('18x12', 'three_two', 6);
 	setPrinter('18x12', 'asda');
+	setPrinter('18x12', 'boots');
 	makeVariant('30x20', 'three_two', 10);
 	setPrinter('30x20', 'asda');
+	setPrinter('30x20', 'boots');
 	makeVariant('36x24', 'three_two', 12);
 	setPrinter('36x24', 'asda');
 
@@ -204,6 +216,7 @@
 	makeVariant('16x12', 'four_three', 4);
 	setPrinter('16x12', 'asda');
 	makeVariant('20x15', 'four_three', 5);
+	makeVariant('40x30', 'four_three', 10);
 
 	makeRatio('five_four', 5, 4, 0);
 	makeVariant('10x8', 'five_four', 2);
@@ -216,6 +229,7 @@
 	setPrinter('10x8', 'asda');
 	makeVariant('15x12', 'five_four', 3);
 	makeVariant('20x16', 'five_four', 4);
+	setPrinter('20x16', 'boots');
 	setPrinter('20x16', 'asda');
 	makeVariant('25x20', 'five_four', 5);
 
