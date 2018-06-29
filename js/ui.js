@@ -99,6 +99,6 @@
 
 	// test();
 	render();
-	// getNames();
+	getNames();
 
 })();

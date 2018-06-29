@@ -157,6 +157,7 @@
 	makePrinter('photobox', 'photobox', 'https://photobox.co.uk');
 	makePrinter('tesco', 'tesco photo', 'https://tescophoto.com');
 	makePrinter('asda', 'asda photo', 'https://asda-photo.co.uk');
+	makePrinter('loxley', 'loxley colour', 'https://loxleycolour.com');
 	makePrinter('sixbyfourprints', 'sixbyfourprints', 'http://sixbyfourprints.com');
 	makePrinter('sevenbyfiveprints', 'sevenbyfiveprints', 'http://sevenbyfiveprints.com');
 	makePrinter('eightbysixprints', 'eightbysixprints', 'http://eightbysixprints.com');
@@ -170,25 +171,34 @@
 	setPrinter('6x4', 'snapfish');
 	setPrinter('6x4', 'tesco');
 	setPrinter('6x4', 'asda');
+	setPrinter('6x4', 'loxley');
 	makeVariant('9x6', '3:2', 3);
 	setPrinter('9x6', 'jessops');
 	setPrinter('9x6', 'asda');
+	setPrinter('9x6', 'loxley');
 	makeVariant('12x8', '3:2', 4);
 	setPrinter('12x8', 'jessops');
 	setPrinter('12x8', 'truprint');
 	setPrinter('12x8', 'boots');
 	setPrinter('12x8', 'tesco');
 	setPrinter('12x8', 'asda');
+	setPrinter('12x8', 'loxley');
 	makeVariant('15x10', '3:2', 5);
 	setPrinter('15x10', 'boots');
+	setPrinter('15x10', 'loxley');
 	makeVariant('18x12', '3:2', 6);
 	setPrinter('18x12', 'asda');
 	setPrinter('18x12', 'boots');
+	setPrinter('18x12', 'loxley');
+	makeVariant('24x16', '3:2', 8);
+	setPrinter('24x16', 'loxley');
 	makeVariant('30x20', '3:2', 10);
 	setPrinter('30x20', 'asda');
 	setPrinter('30x20', 'boots');
+	setPrinter('30x20', 'loxley');
 	makeVariant('36x24', '3:2', 12);
 	setPrinter('36x24', 'asda');
+	setPrinter('36x24', 'loxley');
 
 	makeRatio('7:5', 7, 5, 0);
 	makeVariant('7x5', '7:5', 1);
@@ -199,11 +209,15 @@
 	setPrinter('7x5', 'boots');
 	setPrinter('7x5', 'snapfish');
 	setPrinter('7x5', 'asda');
+	setPrinter('7x5', 'loxley');
 	makeVariant('14x10', '7:5', 2);
+	setPrinter('14x10', 'loxley');
 	makeVariant('21x15', '7:5', 3);
 	makeVariant('28x20', '7:5', 4);
 
 	makeRatio('4:3', 4, 3, 0);
+	makeVariant('4x3', '4:3', 1);
+	setPrinter('4x3', 'loxley');
 	makeVariant('8x6', '4:3', 2);
 	setPrinter('8x6', 'jessops');
 	setPrinter('8x6', 'photobox');
@@ -212,13 +226,22 @@
 	setPrinter('8x6', 'boots');
 	setPrinter('8x6', 'tesco');
 	setPrinter('8x6', 'asda');
+	setPrinter('8x6', 'loxley');
 	makeVariant('12x9', '4:3', 3);
+	setPrinter('12x9', 'loxley');
 	makeVariant('16x12', '4:3', 4);
 	setPrinter('16x12', 'asda');
+	setPrinter('16x12', 'loxley');
 	makeVariant('20x15', '4:3', 5);
+	setPrinter('20x15', 'loxley');
+	makeVariant('24x18', '4:3', 6);
+	setPrinter('24x18', 'loxley');
 	makeVariant('40x30', '4:3', 10);
+	setPrinter('40x30', 'loxley');
 
 	makeRatio('5:4', 5, 4, 0);
+	makeVariant('5x4', '5:4', 1);
+	setPrinter('5x4', 'loxley');
 	makeVariant('10x8', '5:4', 2);
 	setPrinter('10x8', 'jessops');
 	setPrinter('10x8', 'photobox');
@@ -227,17 +250,25 @@
 	setPrinter('10x8', 'boots');
 	setPrinter('10x8', 'tesco');
 	setPrinter('10x8', 'asda');
+	setPrinter('10x8', 'loxley');
 	makeVariant('15x12', '5:4', 3);
+	setPrinter('15x12', 'loxley');
 	makeVariant('20x16', '5:4', 4);
 	setPrinter('20x16', 'boots');
 	setPrinter('20x16', 'asda');
+	setPrinter('20x16', 'loxley');
 	makeVariant('25x20', '5:4', 5);
+	makeVariant('30x24', '5:4', 6);
+	setPrinter('30x24', 'loxley');
 
 	makeRatio('5:3', 5, 3, 0);
 	makeVariant('5x3', '5:3', 1);
 	makeVariant('10x6', '5:3', 2);
+	setPrinter('10x6', 'loxley');
 	makeVariant('15x9', '5:3', 3);
 	makeVariant('20x12', '5:3', 4);
+	setPrinter('20x12', 'loxley');
+	makeVariant('new', '5:3', 6);
 
 	makeRatio('2:1', 2, 1, 0);
 	makeVariant('2x1', '2:1', 1);
@@ -248,6 +279,9 @@
 	makeRatio('6:5', 6, 5, 0);
 	makeVariant('12x10', '6:5', 2);
 	setPrinter('12x10', 'asda');
+	setPrinter('12x10', 'loxley');
+	makeVariant('24x20', '6:5', 4);
+	setPrinter('24x20', 'loxley');
 
 	makeRatio('1:1', 1, 1, 1);
 	makeVariant('4x4', '1:1', 4);
@@ -288,6 +322,24 @@
 	makeVariant('32x18', '16:9', 2);
 	makeVariant('48x27', '16:9', 3);
 	makeVariant('64x36', '16:9', 4);
+
+	makeRatio('8:5', 8, 5, 0);
+	makeVariant('8x5', '8:5', 1);
+	setPrinter('8x5', 'loxley');
+
+	makeRatio('9:5', 8, 5, 0);
+	makeVariant('9x5', '9:5', 1);
+	setPrinter('9x5', 'loxley');
+	makeVariant('18x10', '9:5', 2);
+	setPrinter('18x10', 'loxley');
+
+	makeRatio('11:8', 11, 8, 0);
+	makeVariant('11x8', '11:8', 1);
+	setPrinter('11x8', 'loxley');
+
+	makeRatio('13:8', 13, 8, 0);
+	makeVariant('13x8', '13:8', 1);
+	setPrinter('13x8', 'loxley');
 
 	console.log(printers);
 	console.log(ratios);
