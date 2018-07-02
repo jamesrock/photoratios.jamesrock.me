@@ -215,7 +215,7 @@
 	makeVariant('21x15', '7:5', 3);
 	makeVariant('28x20', '7:5', 4);
 
-	makeRatio('4:3', 4, 3, 0);
+	makeRatio('4:3', 4, 3, 1);
 	makeVariant('4x3', '4:3', 1);
 	setPrinter('4x3', 'loxley');
 	makeVariant('8x6', '4:3', 2);
@@ -239,7 +239,7 @@
 	makeVariant('40x30', '4:3', 10);
 	setPrinter('40x30', 'loxley');
 
-	makeRatio('5:4', 5, 4, 0);
+	makeRatio('5:4', 5, 4, 1);
 	makeVariant('5x4', '5:4', 1);
 	setPrinter('5x4', 'loxley');
 	makeVariant('10x8', '5:4', 2);
@@ -268,7 +268,7 @@
 	makeVariant('15x9', '5:3', 3);
 	makeVariant('20x12', '5:3', 4);
 	setPrinter('20x12', 'loxley');
-	makeVariant('new', '5:3', 6);
+	makeVariant('30x18', '5:3', 6);
 
 	makeRatio('2:1', 2, 1, 0);
 	makeVariant('2x1', '2:1', 1);
@@ -327,7 +327,7 @@
 	makeVariant('8x5', '8:5', 1);
 	setPrinter('8x5', 'loxley');
 
-	makeRatio('9:5', 8, 5, 0);
+	makeRatio('9:5', 9, 5, 0);
 	makeVariant('9x5', '9:5', 1);
 	setPrinter('9x5', 'loxley');
 	makeVariant('18x10', '9:5', 2);

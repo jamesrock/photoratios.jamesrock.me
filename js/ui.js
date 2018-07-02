@@ -91,7 +91,9 @@
 			var
 			name = item.getName();
 
-			console.log([name, key].join(' > '));
+			if(name!==key) {
+				console.log([key, name].join(' > '));
+			};
 
 		});
 
