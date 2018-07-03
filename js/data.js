@@ -27,14 +27,25 @@
 		return (long/this.multiplier);
 
 	};
-	Ratio.prototype.getExampleWidth = function(ppu) {
+	Ratio.prototype.getExampleWidth = function() {
 
-		return (ppu*(this.long*this.variants[this.example].variant));
+		return this.getVariantWidth(this.example);
 
 	};
-	Ratio.prototype.getExampleHeight = function(ppu) {
+	Ratio.prototype.getExampleHeight = function() {
 
-		return (ppu*(this.short*this.variants[this.example].variant));
+
+		return this.getVariantHeight(this.example);
+
+	};
+	Ratio.prototype.getVariantWidth = function(variant) {
+
+		return (this.long*this.variants[variant].variant);
+
+	};
+	Ratio.prototype.getVariantHeight = function(variant) {
+
+		return (this.short*this.variants[variant].variant);
 
 	};
 	Ratio.prototype.setVariant = function(variant) {

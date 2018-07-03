@@ -32,8 +32,8 @@
 				<div class="sizes">{items}</div>\
 			</div>',
 			items = '',
-			width = ratio.getExampleWidth(ppu),
-			height = ratio.getExampleHeight(ppu),
+			width = (ratio.getExampleWidth()*ppu),
+			height = (ratio.getExampleHeight()*ppu),
 			style = `width: ${width}px; height: ${height}px`;
 
 			ratio.variants.forEach(function(variant) {
