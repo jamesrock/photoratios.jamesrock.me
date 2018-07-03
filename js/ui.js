@@ -32,28 +32,31 @@
 				<div class="sizes">{items}</div>\
 			</div>',
 			items = '',
-			style = 'width: ' + ratio.getExampleWidth(ppu) + 'px; height: ' + ratio.getExampleHeight(ppu) + 'px';
+			width = ratio.getExampleWidth(ppu),
+			height = ratio.getExampleHeight(ppu),
+			style = `width: ${width}px; height: ${height}px`;
 
 			ratio.variants.forEach(function(variant) {
 
 				var
-				printers = variant.getPrintersCount();
+				printers = variant.getPrintersCount(),
+				size = variant.getSize();
 
 				if(skipNoPrinters&&printers===0) {
 					return;
 				};
 
 				items += ROCK.STRING.replacer('<div class="size">{size} ({printers} printers)</div>', {
-					size: variant.getSize(),
-					printers: printers
+					size,
+					printers
 				});
 
 			});
 
 			template = ROCK.STRING.replacer(template, {
-				name: name,
-				items: items,
-				style: style
+				name,
+				items,
+				style
 			});
 
 			out += template;
