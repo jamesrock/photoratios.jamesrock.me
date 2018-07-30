@@ -352,6 +352,9 @@
 	makeVariant('13x8', '13:8', 1);
 	setPrinter('13x8', 'loxley');
 
+	makeRatio('1.85:1', 1.85, 1, 0);
+	makeVariant('1.85:1@1', '1.85:1', 10);
+
 	console.log(printers);
 	console.log(ratios);
 	console.log(variants);
